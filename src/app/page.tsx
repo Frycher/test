@@ -36,15 +36,13 @@ export default function Home() {
         </ModalContent>
       </Modal>
       {data.map((post) => (
-        <>
-          <Card shadow="sm" key={post.id} className="p-4">
-            <CardBody className="font-bold text-lg pb-0">
-              <Link href={`${ROUTES.POST}/${post.id}`}>{post.title}</Link>
-            </CardBody>
-            <CardFooter className="text-small justify-between">{post.body.slice(0, 70)}...</CardFooter>
-            <Button onPress={() => handleOpen(post)}>Open Modal</Button>
-          </Card>
-        </>
+        <Card shadow="sm" key={post.id} className="p-4">
+          <CardBody className="font-bold text-lg pb-0">
+            <Link href={`${ROUTES.POST}/${post.id}`}>{post.title}</Link>
+          </CardBody>
+          <CardFooter className="text-small justify-between">{post.body.slice(0, 70)}...</CardFooter>
+          <Button onPress={() => handleOpen(post)}>Open Modal</Button>
+        </Card>
       ))}
     </div>
   );
