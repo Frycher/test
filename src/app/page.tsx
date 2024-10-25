@@ -9,8 +9,8 @@ import { useState } from 'react';
 
 export default function Home() {
   const { data, error, isLoading } = usePosts();
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const handleOpen = (post: Post) => {
     setSelectedPost(post);
@@ -29,14 +29,10 @@ export default function Home() {
     <div className="gap-4 grid grid-cols sm:grid-cols-2 md:grid-cols-3">
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
-          {
-            <>
-              <ModalHeader className="flex flex-col gap-1">{selectedPost?.title}</ModalHeader>
-              <ModalBody>
-                <p>{selectedPost?.body}</p>
-              </ModalBody>
-            </>
-          }
+          <ModalHeader className="flex flex-col gap-1">{selectedPost?.title}</ModalHeader>
+          <ModalBody>
+            <p>{selectedPost?.body}</p>
+          </ModalBody>
         </ModalContent>
       </Modal>
       {data.map((post) => (
